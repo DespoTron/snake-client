@@ -12,19 +12,22 @@ const setupInput = function(conn) {
   return stdin;
 };
 
-const handleUserInput = key => {
-  if (key === '\u0003') {
+const handleUserInput = function(data) {
+  if (data === '\u0003') {
     process.exit();
-  } else if (key === "w") {
-    console.log("up");
-  } else if (key === "a") {
-    console.log("left");
-  } else if (key === "s") {
-    console.log("down");
-  } else if (key === "d") {
-    console.log("right");
+  } else if (data === 'w') {
+    connection.write('Move: up');
+  } else if (data === 's') {
+    connection.write('Move: down');
+  } else if (data === 'a') {
+    connection.write('Move: left');
+  } else if (data === 'd') {
+    connection.write('Move: right');
+  } else if (data === 'l') {
+    connection.write('Say: ssssssweet!');
   }
-}
+};
+
 
 setupInput();
 
