@@ -1,5 +1,20 @@
 let connection;
 
+const handleUserInput = function(data) {
+  if (data === '\u0003') {
+    process.exit();
+  } else if (data === 'w') {
+    connection.write('Move: up');
+  } else if (data === 's') {
+    connection.write('Move: down');
+  } else if (data === 'a') {
+    connection.write('Move: left');
+  } else if (data === 'd') {
+    connection.write('Move: right');
+  } else if (data === 'q') {
+    connection.write('Say: Here comes Homer!');
+  }
+};
 const setupInput = function(conn) {
   connection = conn;
   const stdin = process.stdin;
@@ -12,23 +27,8 @@ const setupInput = function(conn) {
   return stdin;
 };
 
-const handleUserInput = function(data) {
-  if (data === '\u0003') {
-    process.exit();
-  } else if (data === 'w') {
-    connection.write('Move: up');
-  } else if (data === 's') {
-    connection.write('Move: down');
-  } else if (data === 'a') {
-    connection.write('Move: left');
-  } else if (data === 'd') {
-    connection.write('Move: right');
-  } else if (data === 'l') {
-    connection.write('Say: ssssssweet!');
-  }
-};
 
 
-setupInput();
+//setupInput();
 
 module.exports = { setupInput };
