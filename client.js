@@ -2,14 +2,30 @@ const net = require('net');
 
 const connect = function() {
   const conn = net.createConnection({ 
-    host: 'localhost',
-    port: 50541
+    host: '135.23.222.131',
+    port: 50542
   });
 
   // interpret incoming data as text
   conn.setEncoding('utf8'); 
 
-  // client.js
+  conn.on('connect', () =>{
+    console.log('Successfully connected to game server');
+    conn.write("Name: TDO");
+  });
+
+  //conn.on('connect', () => {
+    //conn.write("Move: up");
+  //});
+
+  //conn.on('connect', () => {
+    //conn.write("Move: up");
+  //});
+
+  //conn.on('connect', () => {
+    //conn.write("Move: right");
+  //});
+
   conn.on('data', (data) => {
   console.log('Server says: ', data);
   });
